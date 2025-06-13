@@ -38,7 +38,6 @@ if archivo_alianza and archivo_dartis:
                 filtro3 = st.text_input("Filtrar Solo en Dartis", key="f3")
                 st.dataframe(df_solo_dartis[df_solo_dartis.apply(lambda row: filtro3.lower() in str(row.values).lower(), axis=1)] if filtro3 else df_solo_dartis, use_container_width=True)
 
-                # Descargar resultados
                 output = BytesIO()
                 with pd.ExcelWriter(output, engine='openpyxl') as writer:
                     df_coincidencias.to_excel(writer, sheet_name="Coincidencias", index=False)
